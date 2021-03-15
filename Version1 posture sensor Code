@@ -1,3 +1,4 @@
+//Version1
 const int TOUCH_SENSOR_PIN = 7; // Arduino yun pin connected to touch sensor's pin
 const int BUZZER_PIN       = 3; // Arduino yun pin connected to Buzzer's pin
 
