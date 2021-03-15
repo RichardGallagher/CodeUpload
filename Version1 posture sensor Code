@@ -23,7 +23,7 @@ if (touchState == LOW)
 else if(touchState == HIGH)
 {
   Serial.println("The sensor is recieveing preassure");
-  digitalWrite(BUZZER_PIN, LOW); // TURN ON BUZZZER
+  digitalWrite(BUZZER_PIN, LOW); // TURN OFF BUZZZER
 }
 
 }
