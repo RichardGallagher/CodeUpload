@@ -1,0 +1,34 @@
+
+const int TOUCH_SENSOR_PIN = 7; // Arduino yun pin connected to touch sensor's pin
+const int BUZZER_PIN       = 3; // Arduino yun pin connected to Buzzer's pin
+
+const int ledPin = 12; //LED pin connected to Arduino
+
+void setup() {
+  // put your setup code here, to run once:
+ Serial.begin(9600);              
+  pinMode(TOUCH_SENSOR_PIN, INPUT);
+  pinMode(BUZZER_PIN, OUTPUT);  
+  pinMode(ledPin,OUTPUT);    
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+int touchState = digitalRead(TOUCH_SENSOR_PIN);
+
+if (touchState == LOW)
+{
+  delay(60000);//One minute Delay before buzzer
+  Serial.println("The sensor is not recieving preassure");
+  digitalWrite(BUZZER_PIN, HIGH); // TURN ON BUZZZER
+  digitalWrite(ledPin, HIGH); //Turn ON LED
+}
+else if(touchState == HIGH)
+{
+  Serial.println("The sensor is recieveing preassure");
+  digitalWrite(BUZZER_PIN, LOW); // TURN OFF BUZZZER
+  digitalWrite(ledPin, LOW); //Turn Off LED
+}
+
+}
