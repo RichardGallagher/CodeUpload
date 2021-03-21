@@ -1,0 +1,33 @@
+const int buttonPin = 2; 
+const int buzzer = A3; 
+const int sensorpin =3;
+
+// variables will change:
+int buttonState = 0;         // variable for reading the pushbutton status
+
+void setup() {
+    // initialize the buzzer pin as an output:
+    pinMode(buzzer, OUTPUT);
+    // initialize the pushbutton or the touch sensor pin as an input:
+   
+   // pinMode(buttonPin, INPUT);
+    pinMode(sensorpin, INPUT);
+}
+
+void loop(){
+    // read the state of the pushbutton value:
+    
+   // buttonState = digitalRead(buttonPin);
+    buttonState = digitalRead(sensorpin);
+    
+    if (buttonState == HIGH) {
+      delay(10000);
+       tone(buzzer, 500);
+     
+     //  noTone(buzzer);
+    }
+    else {
+        noTone(buzzer);
+        // tone(buzzer, 500);
+    }
+}
