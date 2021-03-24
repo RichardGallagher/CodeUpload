@@ -1,0 +1,37 @@
+const int buttonPin = 2; 
+const int buzzer = A3; 
+const int sensorpin =3;
+unsigned long previousTime = 0;
+
+
+int buttonState = 0;         // variable for reading the pushbutton status
+int interval = 30000;   //interval time   30 seconds 
+
+void setup() {
+  Serial.begin(9600);
+    // initialize the buzzer pin as an output:
+    pinMode(buzzer, OUTPUT);
+    
+    // initialize the pushbutton or the touch sensor pin as an input:
+      pinMode(buttonPin, INPUT);
+   // pinMode(sensorpin, INPUT);
+}
+
+void loop(){
+    //read the state of the pushbutton value:
+    unsigned long currentTime = millis();
+    buttonState = digitalRead(buttonPin);
+   // buttonState = digitalRead(sensorpin);
+    
+    if (buttonState == HIGH) 
+    {
+       noTone(buzzer);
+       Serial.println("Good posture");
+    }
+    else if (buttonState == LOW && currentTime - previousTime >= interval ) //if the button isint pressed for 30 seconds the buzzer beeps
+    {
+     tone(buzzer, 500);
+      Serial.println("Bad posture");
+      previousTime = currentTime;
+    }
+}
